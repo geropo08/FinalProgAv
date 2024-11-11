@@ -9,7 +9,12 @@ pipeline {
             steps {
                 script {
                     if (params.TEST_CHOICE == "trivia") {
-                        echo "Building trivia"
+                        dir('Entregable1') {
+                            bat 'dir' 
+                            echo "Building trivia"// For Windows
+                        }
+                       
+            
                         //sh 'python main.py' 
                         //sh 'python tests.py'
                     } else if (params.TEST_CHOICE == "procesar pedidos") {
