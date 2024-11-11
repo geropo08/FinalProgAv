@@ -14,6 +14,7 @@ pipeline {
                         dir('Entregable1') {
                             bat 'dir' 
                             echo "Building trivia"// For Windows
+                            bat 'python tests.py'
                         }
                        
             
