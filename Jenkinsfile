@@ -8,6 +8,7 @@ pipeline {
         stage("Build") {
             steps {
                 script {
+                    echo "Building trivia"
                     if (params.TEST_CHOICE == "trivia") {
                         dir('Entregable1') {
                             bat 'dir' 
