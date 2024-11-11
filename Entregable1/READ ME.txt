@@ -1,0 +1,2 @@
+Para iniciar el juego solo es necesario correr el main.
+Luego, la misma aplicacion muestra las opciones y solo hay que ingresar "a", "b" o "c" para responder.

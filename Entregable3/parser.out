@@ -1,0 +1,507 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> query
+Rule 1     query -> elementos
+Rule 2     elementos -> elementos elemento
+Rule 3     elementos -> elemento
+Rule 4     elemento -> FRASE
+Rule 5     elemento -> IDENTIFICADOR
+Rule 6     elemento -> ALL
+Rule 7     elemento -> NUMBER
+Rule 8     elemento -> dot_notation
+Rule 9     elemento -> elemento EQUALS elemento
+Rule 10    elemento -> elemento GREATER elemento
+Rule 11    elemento -> elemento LESSER elemento
+Rule 12    elemento -> LPAREN lista_identificadores RPAREN
+Rule 13    lista_identificadores -> lista_identificadores COMMA IDENTIFICADOR
+Rule 14    lista_identificadores -> lista_identificadores COMMA NUMBER
+Rule 15    lista_identificadores -> elemento
+Rule 16    dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR
+
+Terminals, with rules where they appear
+
+ALL                  : 6
+COMMA                : 13 14
+DOT                  : 16
+EQUALS               : 9
+FRASE                : 4
+GREATER              : 10
+IDENTIFICADOR        : 5 13 16 16
+LESSER               : 11
+LPAREN               : 12
+NUMBER               : 7 14
+RPAREN               : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+dot_notation         : 8
+elemento             : 2 3 9 9 10 10 11 11 15
+elementos            : 1 2
+lista_identificadores : 12 13 14
+query                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . query
+    (1) query -> . elementos
+    (2) elementos -> . elementos elemento
+    (3) elementos -> . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    query                          shift and go to state 1
+    elementos                      shift and go to state 2
+    elemento                       shift and go to state 3
+    dot_notation                   shift and go to state 8
+
+state 1
+
+    (0) S' -> query .
+
+
+
+state 2
+
+    (1) query -> elementos .
+    (2) elementos -> elementos . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    $end            reduce using rule 1 (query -> elementos .)
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    elemento                       shift and go to state 10
+    dot_notation                   shift and go to state 8
+
+state 3
+
+    (3) elementos -> elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+    FRASE           reduce using rule 3 (elementos -> elemento .)
+    IDENTIFICADOR   reduce using rule 3 (elementos -> elemento .)
+    ALL             reduce using rule 3 (elementos -> elemento .)
+    NUMBER          reduce using rule 3 (elementos -> elemento .)
+    LPAREN          reduce using rule 3 (elementos -> elemento .)
+    $end            reduce using rule 3 (elementos -> elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+
+state 4
+
+    (4) elemento -> FRASE .
+
+    EQUALS          reduce using rule 4 (elemento -> FRASE .)
+    GREATER         reduce using rule 4 (elemento -> FRASE .)
+    LESSER          reduce using rule 4 (elemento -> FRASE .)
+    FRASE           reduce using rule 4 (elemento -> FRASE .)
+    IDENTIFICADOR   reduce using rule 4 (elemento -> FRASE .)
+    ALL             reduce using rule 4 (elemento -> FRASE .)
+    NUMBER          reduce using rule 4 (elemento -> FRASE .)
+    LPAREN          reduce using rule 4 (elemento -> FRASE .)
+    $end            reduce using rule 4 (elemento -> FRASE .)
+    RPAREN          reduce using rule 4 (elemento -> FRASE .)
+    COMMA           reduce using rule 4 (elemento -> FRASE .)
+
+
+state 5
+
+    (5) elemento -> IDENTIFICADOR .
+    (16) dot_notation -> IDENTIFICADOR . DOT IDENTIFICADOR
+
+    EQUALS          reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    GREATER         reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    LESSER          reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    FRASE           reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    IDENTIFICADOR   reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    ALL             reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    NUMBER          reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    LPAREN          reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    $end            reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    RPAREN          reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    COMMA           reduce using rule 5 (elemento -> IDENTIFICADOR .)
+    DOT             shift and go to state 14
+
+
+state 6
+
+    (6) elemento -> ALL .
+
+    EQUALS          reduce using rule 6 (elemento -> ALL .)
+    GREATER         reduce using rule 6 (elemento -> ALL .)
+    LESSER          reduce using rule 6 (elemento -> ALL .)
+    FRASE           reduce using rule 6 (elemento -> ALL .)
+    IDENTIFICADOR   reduce using rule 6 (elemento -> ALL .)
+    ALL             reduce using rule 6 (elemento -> ALL .)
+    NUMBER          reduce using rule 6 (elemento -> ALL .)
+    LPAREN          reduce using rule 6 (elemento -> ALL .)
+    $end            reduce using rule 6 (elemento -> ALL .)
+    RPAREN          reduce using rule 6 (elemento -> ALL .)
+    COMMA           reduce using rule 6 (elemento -> ALL .)
+
+
+state 7
+
+    (7) elemento -> NUMBER .
+
+    EQUALS          reduce using rule 7 (elemento -> NUMBER .)
+    GREATER         reduce using rule 7 (elemento -> NUMBER .)
+    LESSER          reduce using rule 7 (elemento -> NUMBER .)
+    FRASE           reduce using rule 7 (elemento -> NUMBER .)
+    IDENTIFICADOR   reduce using rule 7 (elemento -> NUMBER .)
+    ALL             reduce using rule 7 (elemento -> NUMBER .)
+    NUMBER          reduce using rule 7 (elemento -> NUMBER .)
+    LPAREN          reduce using rule 7 (elemento -> NUMBER .)
+    $end            reduce using rule 7 (elemento -> NUMBER .)
+    RPAREN          reduce using rule 7 (elemento -> NUMBER .)
+    COMMA           reduce using rule 7 (elemento -> NUMBER .)
+
+
+state 8
+
+    (8) elemento -> dot_notation .
+
+    EQUALS          reduce using rule 8 (elemento -> dot_notation .)
+    GREATER         reduce using rule 8 (elemento -> dot_notation .)
+    LESSER          reduce using rule 8 (elemento -> dot_notation .)
+    FRASE           reduce using rule 8 (elemento -> dot_notation .)
+    IDENTIFICADOR   reduce using rule 8 (elemento -> dot_notation .)
+    ALL             reduce using rule 8 (elemento -> dot_notation .)
+    NUMBER          reduce using rule 8 (elemento -> dot_notation .)
+    LPAREN          reduce using rule 8 (elemento -> dot_notation .)
+    $end            reduce using rule 8 (elemento -> dot_notation .)
+    RPAREN          reduce using rule 8 (elemento -> dot_notation .)
+    COMMA           reduce using rule 8 (elemento -> dot_notation .)
+
+
+state 9
+
+    (12) elemento -> LPAREN . lista_identificadores RPAREN
+    (13) lista_identificadores -> . lista_identificadores COMMA IDENTIFICADOR
+    (14) lista_identificadores -> . lista_identificadores COMMA NUMBER
+    (15) lista_identificadores -> . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    lista_identificadores          shift and go to state 15
+    elemento                       shift and go to state 16
+    dot_notation                   shift and go to state 8
+
+state 10
+
+    (2) elementos -> elementos elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+    FRASE           reduce using rule 2 (elementos -> elementos elemento .)
+    IDENTIFICADOR   reduce using rule 2 (elementos -> elementos elemento .)
+    ALL             reduce using rule 2 (elementos -> elementos elemento .)
+    NUMBER          reduce using rule 2 (elementos -> elementos elemento .)
+    LPAREN          reduce using rule 2 (elementos -> elementos elemento .)
+    $end            reduce using rule 2 (elementos -> elementos elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+
+state 11
+
+    (9) elemento -> elemento EQUALS . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    elemento                       shift and go to state 17
+    dot_notation                   shift and go to state 8
+
+state 12
+
+    (10) elemento -> elemento GREATER . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    elemento                       shift and go to state 18
+    dot_notation                   shift and go to state 8
+
+state 13
+
+    (11) elemento -> elemento LESSER . elemento
+    (4) elemento -> . FRASE
+    (5) elemento -> . IDENTIFICADOR
+    (6) elemento -> . ALL
+    (7) elemento -> . NUMBER
+    (8) elemento -> . dot_notation
+    (9) elemento -> . elemento EQUALS elemento
+    (10) elemento -> . elemento GREATER elemento
+    (11) elemento -> . elemento LESSER elemento
+    (12) elemento -> . LPAREN lista_identificadores RPAREN
+    (16) dot_notation -> . IDENTIFICADOR DOT IDENTIFICADOR
+
+    FRASE           shift and go to state 4
+    IDENTIFICADOR   shift and go to state 5
+    ALL             shift and go to state 6
+    NUMBER          shift and go to state 7
+    LPAREN          shift and go to state 9
+
+    elemento                       shift and go to state 19
+    dot_notation                   shift and go to state 8
+
+state 14
+
+    (16) dot_notation -> IDENTIFICADOR DOT . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 20
+
+
+state 15
+
+    (12) elemento -> LPAREN lista_identificadores . RPAREN
+    (13) lista_identificadores -> lista_identificadores . COMMA IDENTIFICADOR
+    (14) lista_identificadores -> lista_identificadores . COMMA NUMBER
+
+    RPAREN          shift and go to state 21
+    COMMA           shift and go to state 22
+
+
+state 16
+
+    (15) lista_identificadores -> elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+    RPAREN          reduce using rule 15 (lista_identificadores -> elemento .)
+    COMMA           reduce using rule 15 (lista_identificadores -> elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+
+state 17
+
+    (9) elemento -> elemento EQUALS elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESSER resolved as shift
+    FRASE           reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    IDENTIFICADOR   reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    ALL             reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    NUMBER          reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    LPAREN          reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    $end            reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    RPAREN          reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    COMMA           reduce using rule 9 (elemento -> elemento EQUALS elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+  ! EQUALS          [ reduce using rule 9 (elemento -> elemento EQUALS elemento .) ]
+  ! GREATER         [ reduce using rule 9 (elemento -> elemento EQUALS elemento .) ]
+  ! LESSER          [ reduce using rule 9 (elemento -> elemento EQUALS elemento .) ]
+
+
+state 18
+
+    (10) elemento -> elemento GREATER elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESSER resolved as shift
+    FRASE           reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    IDENTIFICADOR   reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    ALL             reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    NUMBER          reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    LPAREN          reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    $end            reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    RPAREN          reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    COMMA           reduce using rule 10 (elemento -> elemento GREATER elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+  ! EQUALS          [ reduce using rule 10 (elemento -> elemento GREATER elemento .) ]
+  ! GREATER         [ reduce using rule 10 (elemento -> elemento GREATER elemento .) ]
+  ! LESSER          [ reduce using rule 10 (elemento -> elemento GREATER elemento .) ]
+
+
+state 19
+
+    (11) elemento -> elemento LESSER elemento .
+    (9) elemento -> elemento . EQUALS elemento
+    (10) elemento -> elemento . GREATER elemento
+    (11) elemento -> elemento . LESSER elemento
+
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LESSER resolved as shift
+    FRASE           reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    IDENTIFICADOR   reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    ALL             reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    NUMBER          reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    LPAREN          reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    $end            reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    RPAREN          reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    COMMA           reduce using rule 11 (elemento -> elemento LESSER elemento .)
+    EQUALS          shift and go to state 11
+    GREATER         shift and go to state 12
+    LESSER          shift and go to state 13
+
+  ! EQUALS          [ reduce using rule 11 (elemento -> elemento LESSER elemento .) ]
+  ! GREATER         [ reduce using rule 11 (elemento -> elemento LESSER elemento .) ]
+  ! LESSER          [ reduce using rule 11 (elemento -> elemento LESSER elemento .) ]
+
+
+state 20
+
+    (16) dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .
+
+    EQUALS          reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    GREATER         reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    LESSER          reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    FRASE           reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    IDENTIFICADOR   reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    ALL             reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    NUMBER          reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    LPAREN          reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    $end            reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    RPAREN          reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+    COMMA           reduce using rule 16 (dot_notation -> IDENTIFICADOR DOT IDENTIFICADOR .)
+
+
+state 21
+
+    (12) elemento -> LPAREN lista_identificadores RPAREN .
+
+    EQUALS          reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    GREATER         reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    LESSER          reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    FRASE           reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    IDENTIFICADOR   reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    ALL             reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    NUMBER          reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    LPAREN          reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    $end            reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    RPAREN          reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+    COMMA           reduce using rule 12 (elemento -> LPAREN lista_identificadores RPAREN .)
+
+
+state 22
+
+    (13) lista_identificadores -> lista_identificadores COMMA . IDENTIFICADOR
+    (14) lista_identificadores -> lista_identificadores COMMA . NUMBER
+
+    IDENTIFICADOR   shift and go to state 23
+    NUMBER          shift and go to state 24
+
+
+state 23
+
+    (13) lista_identificadores -> lista_identificadores COMMA IDENTIFICADOR .
+
+    RPAREN          reduce using rule 13 (lista_identificadores -> lista_identificadores COMMA IDENTIFICADOR .)
+    COMMA           reduce using rule 13 (lista_identificadores -> lista_identificadores COMMA IDENTIFICADOR .)
+
+
+state 24
+
+    (14) lista_identificadores -> lista_identificadores COMMA NUMBER .
+
+    RPAREN          reduce using rule 14 (lista_identificadores -> lista_identificadores COMMA NUMBER .)
+    COMMA           reduce using rule 14 (lista_identificadores -> lista_identificadores COMMA NUMBER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for EQUALS in state 17 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 17 resolved as shift
+WARNING: shift/reduce conflict for LESSER in state 17 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 18 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 18 resolved as shift
+WARNING: shift/reduce conflict for LESSER in state 18 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 19 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 19 resolved as shift
+WARNING: shift/reduce conflict for LESSER in state 19 resolved as shift
