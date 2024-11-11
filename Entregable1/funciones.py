@@ -160,7 +160,10 @@ def juego(preguntas:Tuple[List[List[str]], List[str]], pts:int) -> Tuple[Tuple[L
     opciones=[preguntas[0][numero_pregunta][1],preguntas[1][0],preguntas[1][1]]
     random.shuffle(opciones) #Las cambia de orden
     print(preguntas[0][numero_pregunta][0]+"\n"+"Opciones: a-"+opciones[0]+" b-"+opciones[1]+" c-"+opciones[2]) #Imprime las opciones
-    ingreso=input("Ingese una opcion: ") #Pide que ingrese una opcion
+    opcionesLetra = ['a', 'b', 'c']
+    
+     #Pide que ingrese una opcion
+
     # Crea mapa de respuesta (a,b,c) y les asigna las opciones
     opciones_map = {
         "a": opciones[0],
@@ -168,7 +171,7 @@ def juego(preguntas:Tuple[List[List[str]], List[str]], pts:int) -> Tuple[Tuple[L
         "c": opciones[2]
     }
     #consulta si ingreso a, b o c y verifica que la opcion sea correcta comparandola con la original
-    if verificador(opciones_map, ingreso, preguntas[0][numero_pregunta][1]):
+    if verificador(opciones_map, random.choice(opcionesLetra), preguntas[0][numero_pregunta][1]):
         #suma 10 pts
         pts += 10
         print("Respuesta Correcta!")
