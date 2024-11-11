@@ -8,12 +8,13 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    echo "Building trivia"
+                    
                     if (params.TEST_CHOICE == "trivia") {
-                        dir('Entregable1') {
-                            bat 'dir' 
-                            echo "Building trivia"// For Windows
-                        }
+                        echo "Building trivia"
+                        //dir('Entregable1') {
+                        //    bat 'dir' 
+                        //    echo "Building trivia"// For Windows
+                        //}
                        
             
                         //sh 'python main.py' 
