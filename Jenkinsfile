@@ -15,7 +15,7 @@ pipeline {
                             echo "Building trivia"// For Windows
                             bat 'python main.py'
                         }
-                    } else if (params.TEST_CHOICE == "procesar pedidos") {
+                    } else if (params.TEST_CHOICE == "procesarDatos") {
                         echo "Building procesar_pedido"
                         dir('Entregable2') {
                             bat 'javac -d out -sourcepath src src/main/java/org/yourcompany/yourproject/*.java'
@@ -46,7 +46,7 @@ pipeline {
                             echo "Test stage trivia."
                             bat 'python tests.py'
                         }
-                    } else if (params.TEST_CHOICE == "procesar pedidos") {
+                    } else if (params.TEST_CHOICE == "procesarDatos") {
                         echo "Testing procesar_pedido"
                         dir('Entregable2') {
                             bat 'mvn clean test'
