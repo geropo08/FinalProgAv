@@ -11,10 +11,10 @@ pipeline {
                     
                     if (params.TEST_CHOICE == "trivia") {
                         echo "Building trivia"
-                        //dir('Entregable1') {
-                        //    bat 'dir' 
-                        //    echo "Building trivia"// For Windows
-                        //}
+                        dir('Entregable1') {
+                            bat 'dir' 
+                            echo "Building trivia"// For Windows
+                        }
                        
             
                         //sh 'python main.py' 
