@@ -28,9 +28,8 @@ pipeline {
                         bat 'pip install ply'
                         bat 'pip install pytest'
                         bat 'pip install pytest-cov'
-                        //sh 'python BD.py'
-                        //sh 'python main.py'
-                        //sh 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
+                        bat 'python BD.py'
+                        bat 'python main.py'
 
                     }
 
@@ -61,9 +60,8 @@ pipeline {
                         bat 'pip install ply'
                         bat 'pip install pytest'
                         bat 'pip install pytest-cov'
-                        //sh 'python BD.py'
-                        //sh 'python main.py'
-                        //sh 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
+
+                        bat 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
 
                     }
 
