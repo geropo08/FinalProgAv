@@ -89,17 +89,18 @@ def main():
     crear_tablas(cursor)
     insertar_datos(cursor)
 
-    conn.commit()  
-    while True:
-        consulta = input("Introduce tu consulta SQL (o 'salir' para terminar): ")
-        if consulta.lower() == 'salir':
-            break
-        try:
-            resultados = ejecutar_consulta(cursor, consulta)
-            for fila in resultados:
-                print(fila)
-        except Exception as e:
-            print(f"Error al ejecutar la consulta: {e}")
+    conn.commit()
+
+    #while True:
+    #    consulta = input("Introduce tu consulta SQL (o 'salir' para terminar): ")
+    #    if consulta.lower() == 'salir':
+    #        break
+    #    try:
+    #        resultados = ejecutar_consulta(cursor, consulta)
+    #        for fila in resultados:
+    #            print(fila)
+    #    except Exception as e:
+    #        print(f"Error al ejecutar la consulta: {e}")
 
     conn.close()
 
