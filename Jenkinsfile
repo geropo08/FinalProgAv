@@ -24,13 +24,14 @@ pipeline {
                         
                         
                     } else if (params.TEST_CHOICE == "USQL") {
-                        echo "Building USQL"
-                        bat 'pip install ply'
-                        bat 'pip install pytest'
-                        bat 'pip install pytest-cov'
-                        bat 'python BD.py'
-                        bat 'python main.py'
-
+                        dir('Entregable3') {
+                            echo "Building USQL"
+                            bat 'pip install ply'
+                            bat 'pip install pytest'
+                            bat 'pip install pytest-cov'
+                            bat 'python BD.py'
+                            bat 'python main.py'
+                        }
                     }
 
                 }
@@ -56,13 +57,12 @@ pipeline {
                         
                         
                     } else if (params.TEST_CHOICE == "USQL") {
-                        echo "Building USQL"
-                        bat 'pip install ply'
-                        bat 'pip install pytest'
-                        bat 'pip install pytest-cov'
+                        dir('Entregable3') {
+                            echo "Testing USQL"
 
-                        bat 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
 
+                            bat 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
+                        }
                     }
 
                 }
