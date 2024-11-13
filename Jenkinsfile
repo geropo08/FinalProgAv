@@ -74,7 +74,16 @@ pipeline {
         success {
             script {
                 // Read test results from a file (ensure the path is correct)
-                def testResults = readFile('Entregable1/test-results.txt')
+                 def testResults = ''
+                
+                // Ensure the file path is correct based on your directory structure
+                if (fileExists('Entregable1/test-results.txt')) {
+                    testResults = readFile('Entregable1/test-results.txt')
+                } else {
+                    echo "test-results.txt not found"
+                    testResults = "Test results file not found."
+                }
+                //def testResults = readFile('Entregable1/test-results.txt')
                 
                 // Compose the email body with test results
                 def emailBody = """Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.
