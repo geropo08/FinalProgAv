@@ -72,18 +72,18 @@ pipeline {
     }
     post {
         success {
-            emailext(
+                mail to: 'geronimocopiawpp@gmail.com',
                 subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.",
-                recipients: 'geronimocopiawpp@gmail.com'
-            )
+                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded."
+                
+            
         }
         failure {
-            emailext(
+                mail to: 'geronimocopiawpp@gmail.com',
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.",
-                recipients: 'geronimocopiawpp@gmail.com'
-            )
+                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed."
+                
+            
         }
     /*always{
         script{
