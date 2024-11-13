@@ -44,7 +44,7 @@ pipeline {
                         echo "Building trivia"
                         dir('Entregable1') {
                             echo "Test stage trivia."
-                            bat 'python tests.py'
+                            bat 'python tests.py > test-results.txt'
                         }
                     } else if (params.TEST_CHOICE == "procesarDatos") {
                         echo "Testing procesar_pedido"
@@ -72,18 +72,36 @@ pipeline {
     }
     post {
         success {
-                mail to: 'geronimocopiawpp@gmail.com',
-                subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded."
+            script {
+                // Read test results from a file (ensure the path is correct)
+                def testResults = readFile('Entregable1/test-results.txt')
                 
-            
+                // Compose the email body with test results
+                def emailBody = """Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.
+    
+    Test Results:
+    ${testResults}
+    """
+                mail to: 'your-email@example.com',
+                     subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                     body: emailBody
+            }
         }
         failure {
-                mail to: 'geronimocopiawpp@gmail.com',
-                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed."
+            script {
+                // Read test results (even if build failed, if relevant tests ran)
+                def testResults = readFile('Entregable1/test-results.txt')
                 
-            
+                // Compose the email body with test results
+                def emailBody = """Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.
+    
+    Test Results:
+    ${testResults}
+    """
+                mail to: 'your-email@example.com',
+                     subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                     body: emailBody
+            }
         }
     }
 }
