@@ -44,7 +44,7 @@ pipeline {
                         echo "Building trivia"
                         dir('Entregable1') {
                             echo "Test stage trivia."
-                            bat 'python tests.py > test-results.txt'
+                            bat 'cmd /c "python tests.py > test-results.txt"'
                             // Check if the file was created
                             if (fileExists('Entregable1/test-results.txt')) {
                                 echo "Test results file created."
