@@ -79,6 +79,7 @@ pipeline {
                 // Ensure the file path is correct based on your directory structure
                 if (fileExists('Entregable1/test-results.txt')) {
                     testResults = readFile('Entregable1/test-results.txt')
+                    echo "File Content: ${testResults}"
                 } else {
                     echo "test-results.txt not found"
                     testResults = "Test results file not found."
