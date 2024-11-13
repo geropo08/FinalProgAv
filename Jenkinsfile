@@ -82,7 +82,7 @@ pipeline {
     Test Results:
     ${testResults}
     """
-                mail to: 'your-email@example.com',
+                mail to: 'geronimocopiawpp@gmail.com',
                      subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                      body: emailBody
             }
@@ -98,7 +98,7 @@ pipeline {
     Test Results:
     ${testResults}
     """
-                mail to: 'your-email@example.com',
+                mail to: 'geronimocopiawpp@gmail.com',
                      subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                      body: emailBody
             }
