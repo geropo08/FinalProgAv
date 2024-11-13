@@ -106,7 +106,7 @@ pipeline {
                 
             """
             emailext
-                subject: "${jobName} - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
+                subject: "Algo",
                 body: body,
                 to: 'geronimocopiawpp@gmail.com',
                 from: 'jenkins@example.com',
