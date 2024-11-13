@@ -71,7 +71,7 @@ pipeline {
         
     }
     post {
-        success {
+        /*success {
                 mail to: 'geronimocopiawpp@gmail.com',
                 subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded."
@@ -84,8 +84,8 @@ pipeline {
                 body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed."
                 
             
-        }
-    /*always{
+        }*/
+    always{
         script{
             def jobName = env.JOB_NAME
             def buildNumber = env.BUILD_NUMBER
@@ -114,6 +114,6 @@ pipeline {
                 mimeType: 'text/html'
             )
         }
-    }*/
+    }
     }
 }
