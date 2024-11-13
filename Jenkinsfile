@@ -71,7 +71,21 @@ pipeline {
         
     }
     post {
-    always{
+        success {
+            emailext(
+                subject: "Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.",
+                to: 'geronimocopiawpp@gmail.com'
+            )
+        }
+        failure {
+            emailext(
+                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.",
+                to: 'geronimocopiawpp@gmail.com'
+            )
+        }
+    /*always{
         script{
             def jobName = env.JOB_NAME
             def buildNumber = env.BUILD_NUMBER
@@ -100,6 +114,6 @@ pipeline {
                 mimeType: 'text/html'
             )
         }
-    }
+    }*/
     }
 }
