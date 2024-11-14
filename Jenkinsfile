@@ -51,7 +51,7 @@ pipeline {
                     } else if (params.TEST_CHOICE == "procesarDatos") {
                         echo "Testing procesar_pedido"
                         dir('Entregable2') {
-                            bat 'mvn clean test'
+                            bat 'mvn clean test > ../test_output.txt 2>&1'
                         }
                         //sh 'javac -d out -sourcepath src src/main/java/org/yourcompany/yourproject/*.java'
                         //sh 'java -cp out org.yourcompany.yourproject.PedidoProcessor'
@@ -63,7 +63,7 @@ pipeline {
                             echo "Testing USQL"
 
 
-                            bat 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing'
+                            bat 'pytest --cov=traductorSQL --cov=DSL --cov-report=html --cov-report=term-missing > ../test_output.txt 2>&1'
                         }
                     }
 
@@ -121,7 +121,7 @@ pipeline {
                 def buildNumber = env.BUILD_NUMBER
                 def pipelineStatus = currentBuild.result ?: 'UNKNOWN'
                 def bannerColor = pipelineStatus.toUpperCase() == 'SUCCESS' ? 'green' : 'red'
-                def testResults = readFile('Entregable1/test_output.txt')
+                def testResults = readFile('test_output.txt')
                 def body = """<html>
                                     <body>
                                         <div style="border: 4px solid ${bannerColor}; padding: 10px;">
