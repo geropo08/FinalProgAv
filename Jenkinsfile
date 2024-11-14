@@ -41,10 +41,10 @@ pipeline {
             steps {
                 script {
                     if (params.TEST_CHOICE == "trivia") {
-                        echo "Building trivia"
+                        echo "Testing trivia"
                         dir('Entregable1') {
                             echo "Test stage trivia."
-                            bat 'python tests.py'
+                            bat 'python tests.py > test_output.txt'
 
                         }
                     } else if (params.TEST_CHOICE == "procesarDatos") {
