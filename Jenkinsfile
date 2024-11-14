@@ -120,6 +120,7 @@ pipeline {
                 def buildNumber = env.BUILD_NUMBER
                 def pipelineStatus = currentBuild.result ?: 'UNKNOWN'
                 def bannerColor = pipelineStatus.toUpperCase() == 'SUCCESS' ? 'green' : 'red'
+                def testResults = readFile('Entregable1/test_output.txt')
                 def body = """<html>
                                     <body>
                                         <div style="border: 4px solid ${bannerColor}; padding: 10px;">
@@ -128,6 +129,7 @@ pipeline {
                                                 <h3 style="color: white;">Pipeline Status: ${pipelineStatus.toUpperCase()}</h3>
                                             </div>
                                             <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
+                                            <pre>${testResults}</pre>
                                         </div>
                                     </body>
                                 </html>
