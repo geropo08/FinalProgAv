@@ -138,14 +138,14 @@ pipeline {
                                 </html>
                     
                 """
-                emailext
+                emailext(
                     subject: 'Algo',
                     body: body,
                     to: 'geronimocopiawpp@gmail.com',
                     from: 'jenkins@example.com',
                     replyTo: 'jenkins@example.com',
                     mimeType: 'text/html'
-                
+                )
             }
     }
     }
