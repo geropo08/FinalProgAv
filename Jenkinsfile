@@ -44,7 +44,7 @@ pipeline {
                         echo "Testing trivia"
                         dir('Entregable1') {
                             echo "Test stage trivia."
-                            bat 'python tests.py > test_output.txt'
+                            bat 'python tests.py > test_output.txt 2>&1'
 
                         }
                     } else if (params.TEST_CHOICE == "procesarDatos") {
