@@ -70,6 +70,28 @@ pipeline {
                 }
             }
         }
+        stage("Package") {
+            steps {
+                script {
+                    echo "Packaging"
+                    def outputZip = "Entregable_${params.TEST_CHOICE}.zip"
+                    if (params.TEST_CHOICE == "trivia") {
+                        dir('Entregable1') {
+                            bat "tar -cvf ../${outputZip} ."
+                        }
+                    } else if (params.TEST_CHOICE == "procesarDatos") {
+                        dir('Entregable2') {
+                            bat "tar -cvf ../${outputZip} ."
+                        }
+                    } else if (params.TEST_CHOICE == "USQL") {
+                        dir('Entregable3') {
+                            bat "tar -cvf ../${outputZip} ."
+                        }
+                    }
+                    archiveArtifacts artifacts: "*.zip", fingerprint: true
+                }
+            }
+        }
         
     }
     post {
